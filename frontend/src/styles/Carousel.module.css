@@ -1,0 +1,41 @@
+.container {
+  background-color: #d1411e;
+  top:-80px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  transition: 1.0s ease-out;
+}
+
+.imgContainer {
+  height: 650px;
+  flex-shrink: 0;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.arrowImg {
+    width: 10%;
+    height: 16%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+}
+@media screen and (max-width: 480px) {
+  .imgContainer{
+
+    height: 250px;
+  }
+  .container {
+    margin-top: 80px;
+  }
+}
