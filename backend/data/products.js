@@ -14,7 +14,7 @@ const products = [
   {
     title:'BBQ Pizza',
     img: "/image/pizza2.png",
-    price: [20.9, 23.9, 27.9],
+    prices: [20.9, 23.9, 27.9],
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis arcu purus, rhoncus fringilla vestibulum vel, dignissim vel ante. Nulla facilisi. Nullam a urna sit amet tellus pellentesque egestas in in ante.",
     extraOptions: [
       { text: "Double Ingredient", price: 4.0 },
@@ -26,7 +26,7 @@ const products = [
   {
     title:'Cheese Pizza',
     img: "/image/pizza3.png",
-    price: [20.9, 23.9, 27.9],
+    prices: [18.3, 23.9, 27.9],
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis arcu purus, rhoncus fringilla vestibulum vel, dignissim vel ante. Nulla facilisi. Nullam a urna sit amet tellus pellentesque egestas in in ante.",
     extraOptions: [
       { text: "Double Ingredient", price: 4.0 },

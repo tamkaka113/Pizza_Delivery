@@ -18,7 +18,6 @@ const Carousel = () => {
     }
   }
 
-  console.log(index)
   return (
     <div className={styles.container}>
   <img src="../image/arrowl.png" className={styles.arrowImg} style={{left:'0', zIndex:'20', objectFit:'contain'}} alt="arrow"

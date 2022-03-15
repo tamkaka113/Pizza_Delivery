@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "../styles/PizzaList.module.css";
 import PizzaCard from "./PizzaCard";
-const PizzaList = () => {
+import {useHistory}  from 'react-router-dom'
+const PizzaList = ({productList}) => {
+  const history =useHistory()
+  const {loading, products} = productList
+
+  const handleProduct =(id) => {
+  history.push(`/product/${id}`)
+  }
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>THE BEST PIZZA IN TOWN</h1>
@@ -12,14 +19,18 @@ const PizzaList = () => {
       </p>
 
       <div className={styles.wrapper}>
-          <PizzaCard/>
-           <PizzaCard/>
-           <PizzaCard/>
-           <PizzaCard/>
-           <PizzaCard/>
-           <PizzaCard/>
-           <PizzaCard/>
-           <PizzaCard/>
+      {loading && <div style ={{fontSize:'30px',marginTop:'10px'}}>Loading 🍕🍕🍕</div>}
+        {products.map((product,i) => {
+
+          return (
+
+           <PizzaCard 
+           handleProduct={()=>handleProduct(product._id)}
+          key ={i}
+           product={product}/>)
+        }
+        )}
+          
       </div>
     </div>
   );
