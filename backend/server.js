@@ -6,6 +6,7 @@ import connectDB from './db/connectDB.js'
 import productRouter from './routes/productRouter.js'
 import adminRouter from './routes/adminRouter.js'
 import { notFound,errorHandler } from "./middleware/errorMiddleware.js";
+import orderRouter from './routes/orderRouter.js'
 const app = express();
 
 app.use(morgan("dev"));
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use('/api/v1/products',productRouter)
+app.use('/api/v1/orders',orderRouter)
 app.use('/api/v1/admin',adminRouter)
 app.use(notFound)
 app.use(errorHandler)
