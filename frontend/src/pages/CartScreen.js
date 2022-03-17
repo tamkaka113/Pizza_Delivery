@@ -9,11 +9,23 @@ import {
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 import OrderDetail from "../components/OrderDetail";
-const CartScreen = () => {
+import {resetCart} from '../actions/cartActions'
+const CartScreen = ({history}) => {
   const [open, setOpen] = useState(false);
   const [cash, setCash] = useState(false);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
+
+  const orderList =useSelector(state=> state.orders)
+console.log(orderList,'tam')
+  const {success, orders} =orderList
+  useEffect(()=> {
+    if(success) {
+      history.push(`/order/${orders._id}`)
+      dispatch(resetCart())
+      window.location.reload()
+    }
+  },[success])
 
   const totalPrice = cartItems.reduce((total, item) => {
     total += item.price * item.qnt;
@@ -181,7 +193,7 @@ const CartScreen = () => {
           )}
         </div>
       </div>
-      {cash && <OrderDetail total={totalPrice} createOrder={createOrder} />}
+      {cash && <OrderDetail total={totalPrice.toFixed(2)} createNewOrder={createNewOrder} dispatch ={dispatch}/>}
     </div>
   );
 };

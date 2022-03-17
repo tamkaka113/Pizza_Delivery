@@ -20,7 +20,7 @@ const PizzaList = ({productList}) => {
 
       <div className={styles.wrapper}>
       {loading && <div style ={{fontSize:'30px',marginTop:'10px'}}>Loading 🍕🍕🍕</div>}
-        {products.map((product,i) => {
+        {products?.map((product,i) => {
 
           return (
 

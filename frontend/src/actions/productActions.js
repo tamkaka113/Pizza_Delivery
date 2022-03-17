@@ -11,7 +11,7 @@ import {
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: GET_PRODUCTS_REQUEST });
-    const { data } = await axios.get("api/v1/products");
+    const { data } = await axios.get("/api/v1/products");
     dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

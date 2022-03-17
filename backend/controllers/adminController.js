@@ -1,7 +1,9 @@
 import asyncHandler from "express-async-handler"
 import generateToken from '../utils/generateToken.js'
-const adminLogin =asyncHandler(async (req,res) => {
+import Order from '../models/Order.js'
+export const adminLogin =asyncHandler(async (req,res) => {
      const {username, password} = req.body
+
 if(username ===process.env.ADMIN && password === process.env.PASSWORD) {
     res.status(200).json({
         username: process.env.ADMIN,
@@ -13,4 +15,5 @@ if(username ===process.env.ADMIN && password === process.env.PASSWORD) {
 
 })
 
-export {adminLogin}
+
+

@@ -1,18 +1,18 @@
 import { useState } from "react";
 import styles from "../styles/OrderDetail.module.css";
 
-const OrderDetail = ({ total, createOrder }) => {
+const OrderDetail = ({ total, createNewOrder,dispatch }) => {
   const [customer, setCustomer] = useState("");
   const [address, setAddress] = useState("");
 
   const handleClick = () => {
-    createOrder({ customer, address, total, method: 0 });
+    dispatch(createNewOrder({ customer, address, total, method: 0 }));
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>You will pay $12 after delivery.</h1>
+        <h1 className={styles.title}>You will pay $9.0 after delivery.</h1>
         <div className={styles.item}>
           <label className={styles.label}>Name Surname</label>
           <input

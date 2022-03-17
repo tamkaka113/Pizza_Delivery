@@ -21,4 +21,5 @@ export const removeCart = (id) => async (dispatch, getState) => {
 
 export const resetCart = () => async (dispatch, getState) => {
   dispatch({ type: CART_RESET_ITEM });
+  localStorage.removeItem("cartItems")
 };

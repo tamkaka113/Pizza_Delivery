@@ -7,6 +7,8 @@ import ProductScreen from './pages/ProductScreen';
 import CartScreen from './pages/CartScreen';
 import OrderScreen from './pages/OrderScreen';
 import Footer from './components/Footer'
+import Login from './pages/admin/Login';
+import Dashboard from './pages/admin/Dashboard';
 function App() {
   return (
     <Router >
@@ -15,6 +17,8 @@ function App() {
     <Route path='/product/:id' component={ProductScreen}/>
     <Route path='/cart' component={CartScreen}/>
     <Route path='/order/:id' component={OrderScreen}/>
+    <Route path='/admin/login' component={Login}/>
+    <Route path='/admin/dashboard' component={Dashboard}/>
     <Footer/>
     </Router>
   );

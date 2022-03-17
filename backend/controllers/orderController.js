@@ -12,7 +12,43 @@ export const createOrders = asyncHandler(async (req, res) => {
   });
 
   const createOrder = await order.save();
-  res.status(200).json(createOrder);
+  res.status(201).json(createOrder);
 });
 
+export const userOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
 
+  if (!order) {
+    throw new Error("Order Not Found");
+  }
+
+  res.status(200).json(order);
+});
+
+export const getAllOrder = asyncHandler(async (req, res) => {
+  const orders = await Order.find({});
+
+  if (!orders) {
+    throw new Error("Orders Not Found");
+  }
+
+  res.status(200).json(orders);
+});
+
+export const updateOrderStatus = asyncHandler(async (req, res) => {
+
+  const {currentStatus} =req.body
+  console.log(currentStatus)
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    throw new Error("Orders Not Found");
+  }
+  
+  order.status =currentStatus + 1
+
+
+  const newOrder = await order.save()
+
+  res.status(200).json(newOrder);
+});
