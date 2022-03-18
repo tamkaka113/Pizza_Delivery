@@ -1,11 +1,17 @@
 import React from 'react'
 import styles from '../styles/Header.module.css'
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
 import {useHistory} from 'react-router-dom'
+import {logout} from '../actions/adminActions'
 function Header() {
 const history =useHistory()
+const dispatch =useDispatch()
  const cart =useSelector(state => state.cart.cartItems)
- 
+ const {adminInfo} =useSelector(state => state?.adminLogin)
+
+  const handleLogOut = () => {
+dispatch(logout())
+  }
   return (
     <div className={styles.container}>
       <div className={styles.item}>
@@ -24,9 +30,9 @@ const history =useHistory()
           <li className={styles.listItem}>Products</li>
           <li className={styles.listItem}>Menu</li>
           <img src="../image/logo.png" alt="" style={{ width:'160px',height:'69px'}} />
-          <li className={styles.listItem}>Events</li>
-          <li className={styles.listItem}>Blog</li>
-          <li className={styles.listItem}>Contact</li>
+         {adminInfo?.username&& <li className={styles.listItem} onClick = {()=> history.push('/admin/dashboard')} >Dashboard</li>}
+         {adminInfo?.username&& <li className={styles.listItem} onClick ={()=> {handleLogOut()}}>Logout</li>}
+          
         </ul>
       </div>
       <div className={styles.item}>

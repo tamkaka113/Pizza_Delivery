@@ -9,6 +9,7 @@ import OrderScreen from './pages/OrderScreen';
 import Footer from './components/Footer'
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
+import EditProduct from "./components/EditProduct";
 function App() {
   return (
     <Router >
@@ -19,6 +20,7 @@ function App() {
     <Route path='/order/:id' component={OrderScreen}/>
     <Route path='/admin/login' component={Login}/>
     <Route path='/admin/dashboard' component={Dashboard}/>
+    <Route path='/admin/:id/edit' component={EditProduct}/>
     <Footer/>
     </Router>
   );

@@ -4,6 +4,7 @@ import {
   ADMIN_LOGIN_FAIL,
   ADMIN_LOGIN_REQUEST,
   ADMIN_LOGIN_SUCCESS,
+  ADMIN_LOGOUT,
 } from "../contants/adminConstants";
 
 export const adminLogin = ({username,password}) => async (dispatch ) => {
@@ -20,7 +21,6 @@ export const adminLogin = ({username,password}) => async (dispatch ) => {
 
     const { data } = await axios.post("/api/v1/admin/login",{username,password},config);
 
-    console.log(data)
     dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: data });
    
     localStorage.setItem("adminInfo", JSON.stringify(data));
@@ -33,4 +33,12 @@ export const adminLogin = ({username,password}) => async (dispatch ) => {
           : error.message,
     });
   } 
+};
+
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem("adminInfo");
+  dispatch({ type: ADMIN_LOGOUT });
+ 
+
 };

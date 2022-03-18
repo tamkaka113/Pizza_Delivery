@@ -1,31 +1,57 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/Admin.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { listProducts } from "../../actions/productActions";
+import { listProducts, deleteProduct } from "../../actions/productActions";
 import { getAllOrders } from "../../actions/orderActions";
 import { updateStatus } from "../../actions/orderActions";
-const Dashboard = () => {
-  const dispatch = useDispatch();
-  const status = ["preparing", "on the way", "delivered"];
 
+const Dashboard = ({ history }) => {
+  const dispatch = useDispatch();
+
+
+  const status = ["preparing", "on the way", "delivered"];
+  const { success: newProductSuccess } = useSelector(
+    (state) => state?.createProduct
+  );
+  const { success: deleteProductSuccess } = useSelector(
+    (state) => state?.deleteProduct
+  );
   const products = useSelector((state) => state.productList.products);
+  const {product} = useSelector((state) => state.product)
   const orders = useSelector((state) => state?.adminOrders.orders);
 
+  const { adminInfo } = useSelector((state) => state?.adminLogin);
+
   useEffect(() => {
-    dispatch(listProducts());
-    dispatch(getAllOrders());
-  }, []);
-  const pizzaList = [];
-  const order = [];
-  const handleDelete = (id) => {};
+    if (adminInfo.username || newProductSuccess || deleteProductSuccess) {
+      dispatch(listProducts());
+      dispatch(getAllOrders());
+    } else {
+      history.push("/admin/login");
+    }
+  }, [
+    adminInfo.username,
+    dispatch,
+   
+    newProductSuccess,
+    deleteProductSuccess,
+  ]);
+
+  const handleDelete = (id) => {
+    dispatch(deleteProduct(id));
+  };
 
   const handleStatus = (id, currentStatus) => {
     dispatch(updateStatus(id, currentStatus));
-    window.location.reload()
   };
 
+  const handleEdit = (id) => {
+    history.push(`/admin/${id}/edit`)
+  };
   return (
+    <>
     <div className={styles.container}>
+  
       <div className={styles.item}>
         <h1 className={styles.title}>Products</h1>
         <table className={styles.table}>
@@ -52,7 +78,13 @@ const Dashboard = () => {
                 <td>{product.title}</td>
                 <td>${product.prices[0]}</td>
                 <td>
-                  <button className={styles.button}>Edit</button>
+                  <button
+                    className={styles.button}
+                    onClick={() => handleEdit(product._id)}
+                  >
+                    Edit
+                  </button>
+
                   <button
                     className={styles.button}
                     onClick={() => handleDelete(product._id)}
@@ -99,6 +131,7 @@ const Dashboard = () => {
         </table>
       </div>
     </div>
+    </>
   );
 };
 

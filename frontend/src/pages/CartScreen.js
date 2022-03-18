@@ -17,7 +17,6 @@ const CartScreen = ({history}) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   const orderList =useSelector(state=> state.orders)
-console.log(orderList,'tam')
   const {success, orders} =orderList
   useEffect(()=> {
     if(success) {
@@ -25,7 +24,7 @@ console.log(orderList,'tam')
       dispatch(resetCart())
       window.location.reload()
     }
-  },[success])
+  },[success,orders._id,dispatch,history])
 
   const totalPrice = cartItems.reduce((total, item) => {
     total += item.price * item.qnt;

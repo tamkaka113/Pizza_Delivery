@@ -63,7 +63,7 @@ export const updateStatusReducers = (state = { product: {} },action) => {
     case UPDATE_STATUS_REQUEST:
       return { loading: true, product: {} };
     case UPDATE_STATUS_SUCCESS:
-      return { loading: false, product: action.payload };
+      return { loading: false,success:true, product: action.payload };
     case UPDATE_STATUS_FAIL:
       return { loading: false, error: action.payload };
 

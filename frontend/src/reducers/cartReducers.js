@@ -21,7 +21,7 @@ export const cartReducers = (state = { cartItems:[] }, action) => {
       } else {
         return {
           ...state,
-          cartItems: [... state?.cartItems, item],
+          cartItems:[... state?.cartItems, item],
         };
       }
     case CART_REMOVE_ITEM:

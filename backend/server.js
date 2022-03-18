@@ -7,11 +7,21 @@ import productRouter from './routes/productRouter.js'
 import adminRouter from './routes/adminRouter.js'
 import { notFound,errorHandler } from "./middleware/errorMiddleware.js";
 import orderRouter from './routes/orderRouter.js'
+import fileUpload from 'express-fileupload'
+import { v2 as cloudinary } from "cloudinary";
 const app = express();
 
 app.use(morgan("dev"));
 app.use(express.json());
 connectDB()
+
+app.use(fileUpload({ useTempFiles: true }))
+cloudinary.config({
+  cloud_name:process.env.CLOUD_NAME,
+  api_key:process.env.CLOUD_API_KEY,
+  api_secret:process.env.CLOUD_API_SECRET,
+
+})
 app.get("/", (req, res) => {
   res.send("this is homepage");
 });

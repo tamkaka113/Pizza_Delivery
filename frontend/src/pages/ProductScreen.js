@@ -11,7 +11,7 @@ const ProductScreen = ({ match }) => {
  
   useEffect(() => {
     dispatch(getSingleProduct(id));
-  }, [id]);
+  }, [id,dispatch]);
 
 
   return (
