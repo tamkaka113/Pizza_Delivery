@@ -26,11 +26,6 @@ cloudinary.config({
 
 const __dirname = path.resolve()
 
-
-app.get("/", (req, res) => {
-  res.send("this is homepage");
-});
-
 app.use('/api/v1/products',productRouter)
 app.use('/api/v1/orders',orderRouter)
 app.use('/api/v1/admin',adminRouter)
