@@ -1,5 +1,5 @@
 .container {
-    height: calc(60vh - 100px);
+    height: calc(65vh - 80px);
     background-color: var(--black-color);
     display: flex;
   }
@@ -12,7 +12,7 @@
   
   .item:last-child {
     flex: 2;
-    padding: 50px;
+    padding: 35px;
     justify-content: space-between;
   }
   

@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState,useRef,useEffect } from "react";
 import styles from "../styles/Product.module.css";
 import {addToCart} from '../actions/cartActions'
 import { useDispatch } from "react-redux";
@@ -25,7 +25,12 @@ const ProductDetail = ({ loading, pizza,toastify }) => {
     }
   };
 
-  pizzaRef.current?.scrollIntoView({ behavior: "smooth" });
+  useEffect(() => {
+  
+    pizzaRef.current?.scrollIntoView({ behavior: "smooth" });
+   
+  }, [])
+  
   const handleCart =() => {
 
       dispatch(addToCart({

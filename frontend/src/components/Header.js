@@ -22,6 +22,7 @@ toastify()
     <ToastContainer/>
     <div className={styles.container}>
       <div className={styles.item}>
+      <img className={styles.image} onClick ={()=> history.push('/')} src="../image/logo.png" alt="" style={{ width:'100px',height:'69px'}} />
       <div className={styles.callButton}>
         <img src='../image/telephone.png' alt='telephone' style={{ width:'35px',height:'35px'}}/>
         </div>
@@ -33,7 +34,6 @@ toastify()
      
       <div className={styles.item}>
         <ul className={styles.list}>
-          <img onClick ={()=> history.push('/')} src="../image/logo.png" alt="" style={{ width:'160px',height:'69px'}} />
           <li onClick ={()=> history.push('/')} className={styles.listItem}>Homepage</li>
           <li className={styles.listItem}>Products</li> 
           <li className={styles.listItem}>Menu</li>

@@ -1,6 +1,6 @@
 .mainAddButton {
   padding: 10px;
-  margin: 20px;
+  margin: 20px 88px;
   background-color: var(--clr-primary-1);
   width: 150px;
   border-radius: 10px;
@@ -109,4 +109,11 @@
 }
 .addButton:hover {
   background-color: var(--clr-primary-4);
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 95vw;
+    left: 8px;
+  }
 }
