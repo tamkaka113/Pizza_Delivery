@@ -15,16 +15,33 @@
 
 .button {
   border: none;
-  color: white;
+  color: var(--white-color);
   padding: 5px;
   cursor: pointer;
 }
 
 .button:first-child {
-  background-color: teal;
+  background-color: var(--clr-primary-3);
   margin-right: 10px;
+}
+.button:first-child:hover {
+  background-color: var(--clr-primary-4);
 }
 
 .button:last-child {
-  background-color: crimson;
+  background-color:var(--clr-primary-5);
+}
+.button:last-child:hover {
+  background-color: var(--clr-primary-6);
+}
+.processBtn{
+  background-color: var(--clr-primary-1);
+  border: none;
+  list-style: none;
+  color: var(--white-color);
+  padding: 4px;
+  cursor: pointer;
+}
+.processBtn:hover {
+  background-color: var(--clr-primary-2)
 }

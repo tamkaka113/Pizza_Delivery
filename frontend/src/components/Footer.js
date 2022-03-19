@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.item}>
-        <img className={styles.img} src="/image/bg.png"  layout="fill" alt="" style={{objectFit:"cover"}} />
+        <img className={styles.img} src="/image/bg.jpeg"  layout="fill" alt="" style={{objectFit:"cover"}} />
       </div>
       <div className={styles.item}>
         <div className={styles.card}>
@@ -15,22 +15,22 @@ const Footer = () => {
         <div className={styles.card}>
           <h1 className={styles.title}>FIND OUR RESTAURANTS</h1>
           <p className={styles.text}>
-            1654 R. Don Road #304.
-            <br /> NewYork, 85022
-            <br /> (602) 867-1010
+            169 Main Road #304.
+            <br /> Sydney,
+            <br /> (03) 6334 2323
           </p>
           <p className={styles.text}>
-            2356 K. Laquie Rd #235.
+          169 Brisbane st Rd #235.
             <br /> NewYork, 85022
-            <br /> (602) 867-1011
+            <br /> (03) 6334 2323
           </p>
         
         </div>
         <div className={styles.card}>
           <h1 className={styles.title}>WORKING HOURS</h1>
           <p className={styles.text}>
-            MONDAY UNTIL FRIDAY
-            <br /> 9:00 – 22:00
+            MONDAY TO FRIDAY
+            <br /> 9:00 – 21:00
           </p>
           <p className={styles.text}>
             SATURDAY - SUNDAY

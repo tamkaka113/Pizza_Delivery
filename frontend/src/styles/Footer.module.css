@@ -1,6 +1,6 @@
 .container {
-    height: calc(70vh - 100px);
-    background-color: #222;
+    height: calc(60vh - 100px);
+    background-color: var(--black-color);
     display: flex;
   }
   
@@ -27,11 +27,11 @@
   }
   
   .text {
-    color: lightgray;
+    color: var(--gray-light-color);
   }
   
   .motto {
-    color: rgb(211, 211, 211);
+    color:  var(--gray-light-color);
   }
   .img {
     width: 100%;

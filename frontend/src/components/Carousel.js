@@ -3,9 +3,9 @@ import styles from "../styles/Carousel.module.css";
 const Carousel = () => {
   const [index, setIndex] = useState(0);
   const images = [
-    "/image/featured.png",
     "/image/featured2.png",
     "/image/featured3.png",
+    "/image/featured2.png",
   ];
 
   const handleDirection = (direction) => {

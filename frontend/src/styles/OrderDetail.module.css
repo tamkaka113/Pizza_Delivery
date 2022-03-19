@@ -8,12 +8,12 @@
   z-index: 999;
   align-items: center;
   justify-content: center;
-  background-color: rgba(197, 197, 197, 0.568);
+  background-color: var(--gray-light-color);
 }
 
 .wrapper {
   width: 500px;
-  background-color: white;
+  background-color: var(--white-color);
   border-radius: 20px;
   padding: 50px;
   display: flex;
@@ -43,8 +43,8 @@
 
 .button {
   border: none;
-  background-color: teal;
-  color: white;
+  background-color: var(--clr-primary-3);
+  color: var(--white-color);
   padding: 10px 20px;
   font-weight: 500;
   font-size: 16px;

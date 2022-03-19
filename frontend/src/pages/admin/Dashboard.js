@@ -13,17 +13,20 @@ const Dashboard = ({ history }) => {
   const { success: newProductSuccess } = useSelector(
     (state) => state?.createProduct
   );
+  const { success: updateStatusSuccess } = useSelector(
+    (state) => state?.updateStatus
+  );
   const { success: deleteProductSuccess } = useSelector(
     (state) => state?.deleteProduct
   );
   const products = useSelector((state) => state.productList.products);
-  const {product} = useSelector((state) => state.product)
+
   const orders = useSelector((state) => state?.adminOrders.orders);
 
   const { adminInfo } = useSelector((state) => state?.adminLogin);
-
+  
   useEffect(() => {
-    if (adminInfo.username || newProductSuccess || deleteProductSuccess) {
+    if (adminInfo.username || newProductSuccess || deleteProductSuccess || updateStatusSuccess) {
       dispatch(listProducts());
       dispatch(getAllOrders());
     } else {
@@ -32,9 +35,10 @@ const Dashboard = ({ history }) => {
   }, [
     adminInfo.username,
     dispatch,
-   
+   history,
     newProductSuccess,
     deleteProductSuccess,
+    updateStatusSuccess
   ]);
 
   const handleDelete = (id) => {
@@ -121,7 +125,7 @@ const Dashboard = ({ history }) => {
                 </td>
                 <td>{status[order.status]}</td>
                 <td>
-                  <button onClick={() => handleStatus(order._id, order.status)}>
+                  <button className={styles.processBtn}  onClick={() => handleStatus(order._id, order.status)}>
                     Next Stage
                   </button>
                 </td>

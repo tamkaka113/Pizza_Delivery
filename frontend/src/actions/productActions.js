@@ -12,6 +12,9 @@ import {
   DELETE_PRODUCT_REQUEST,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAIL,
+  UPDATE_PRODUCT_REQUEST,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAIL,
 } from "../contants/productConstants";
 
 export const listProducts = () => async (dispatch) => {
@@ -69,6 +72,27 @@ export const createProduct = (product) => async (dispatch) => {
     });
   }
 };
+
+export const updateProduct = (id,product) => async (dispatch) => {
+
+  try {
+
+    dispatch({ type: UPDATE_PRODUCT_REQUEST });
+
+   const {data} =  await axios.patch(`/api/v1/products/${id}`,product);
+
+    dispatch({ type: UPDATE_PRODUCT_SUCCESS,payload: data});
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PRODUCT_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
 
 export const deleteProduct = (id) => async (dispatch) => {
 

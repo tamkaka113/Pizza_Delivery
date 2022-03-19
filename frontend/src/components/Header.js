@@ -1,9 +1,13 @@
 import React from 'react'
 import styles from '../styles/Header.module.css'
 import {useSelector,useDispatch} from 'react-redux'
-import {useHistory} from 'react-router-dom'
+import { useHistory} from 'react-router-dom'
 import {logout} from '../actions/adminActions'
+import { ToastContainer, toast } from 'react-toastify';
 function Header() {
+  const toastify =() => toast.success("🦄 'You have logged out successfully'!", {
+    autoClose: 2000,
+  });
 const history =useHistory()
 const dispatch =useDispatch()
  const cart =useSelector(state => state.cart.cartItems)
@@ -11,8 +15,11 @@ const dispatch =useDispatch()
 
   const handleLogOut = () => {
 dispatch(logout())
+toastify()
   }
   return (
+    <>
+    <ToastContainer/>
     <div className={styles.container}>
       <div className={styles.item}>
       <div className={styles.callButton}>
@@ -26,10 +33,10 @@ dispatch(logout())
      
       <div className={styles.item}>
         <ul className={styles.list}>
+          <img onClick ={()=> history.push('/')} src="../image/logo.png" alt="" style={{ width:'160px',height:'69px'}} />
           <li onClick ={()=> history.push('/')} className={styles.listItem}>Homepage</li>
-          <li className={styles.listItem}>Products</li>
+          <li className={styles.listItem}>Products</li> 
           <li className={styles.listItem}>Menu</li>
-          <img src="../image/logo.png" alt="" style={{ width:'160px',height:'69px'}} />
          {adminInfo?.username&& <li className={styles.listItem} onClick = {()=> history.push('/admin/dashboard')} >Dashboard</li>}
          {adminInfo?.username&& <li className={styles.listItem} onClick ={()=> {handleLogOut()}}>Logout</li>}
           
@@ -42,6 +49,7 @@ dispatch(logout())
         </div>
       </div>
     </div>
+    </>
   )
 }
 

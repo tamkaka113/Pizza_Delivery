@@ -1,13 +1,28 @@
+:root {
+  /* dark shades of primary color*/
+  --clr-primary-1: #d1411e;
+  --clr-primary-2: #d1421ecc;
+  --clr-primary-3: teal;
+  --clr-primary-4: rgba(0, 128, 128, 0.788);
+  --clr-primary-5: crimson;
+  --clr-primary-6: rgba(220, 20, 60, 0.76);
+  --white-color: white;
+  --red-color: red;
+  --black-color: black;
+  --gray-color: #666;
+  --gray-light-color: #777;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

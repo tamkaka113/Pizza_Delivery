@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 import EditProduct from "./components/EditProduct";
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <Router >

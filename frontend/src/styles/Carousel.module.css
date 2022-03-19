@@ -1,5 +1,5 @@
 .container {
-  background-color: #d1411e;
+  background-color: var(--clr-primary-1);
   top:-80px;
   position: relative;
   overflow: hidden;

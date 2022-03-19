@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import styles from "../styles/Product.module.css";
 import {addToCart} from '../actions/cartActions'
 import { useDispatch } from "react-redux";
-const ProductDetail = ({ loading, pizza }) => {
+const ProductDetail = ({ loading, pizza,toastify }) => {
     const dispatch =useDispatch()
+    const pizzaRef =useRef()
   const [size, setSize] = useState(0);
   const [price, setPrice] = useState(0);
   const [extras, setExtras] =useState([])
@@ -24,7 +25,7 @@ const ProductDetail = ({ loading, pizza }) => {
     }
   };
 
-
+  pizzaRef.current?.scrollIntoView({ behavior: "smooth" });
   const handleCart =() => {
 
       dispatch(addToCart({
@@ -37,15 +38,18 @@ const ProductDetail = ({ loading, pizza }) => {
       qnt:quantity
 
       }))
+
+      toastify()
   }
   return (
-    <div>
+    <div >
+      <div ref={pizzaRef}></div>
       {loading && (
         <div style={{ fontSize: "20px", marginTop: "10px" }}>
           Loading 🍕🍕🍕
         </div>
       )}
-      <div className={styles.container}>
+      <div  className={styles.container}>
         <div className={styles.left}>
           <div className={styles.imgContainer}>
             <img className={styles.img} src={pizza?.img} alt="" />
@@ -53,8 +57,8 @@ const ProductDetail = ({ loading, pizza }) => {
         </div>
         <div className={styles.right}>
           <h1 className={styles.title}>{pizza?.name}</h1>
-          <span className={styles.price}>
-            {pizza?.prices && pizza?.prices[size] +price}
+          <span  className={styles.price}>
+          ${pizza?.prices && pizza?.prices[size] +price}
           </span>
           <p className={styles.desc}>{pizza?.desc}</p>
           <h3 className={styles.choose}>Choose the size</h3>
