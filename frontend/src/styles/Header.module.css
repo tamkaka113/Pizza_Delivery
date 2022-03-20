@@ -11,7 +11,9 @@
   z-index: 999;
 
 }
-
+.image {
+  cursor: pointer;
+}
 .item {
     flex:2;
     display: flex;

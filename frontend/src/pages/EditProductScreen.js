@@ -4,9 +4,13 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {getSingleProduct,updateProduct } from "../actions/productActions";
 import { useHistory, useParams } from "react-router-dom";
-const Add = () => {
+import { ToastContainer, toast } from 'react-toastify';
+import {UPDATE_PRODUCT_RESET} from '../contants/productConstants'
+const EditProductScreen = () => {
   const { id } = useParams();
-
+  const toastify =() => toast.success("🦄 'Product updated successfully'!", {
+    autoClose: 1500,
+  });
   const dispatch = useDispatch();
   const history = useHistory();
   const [image, setImage] = useState("");
@@ -15,10 +19,13 @@ const Add = () => {
   const [prices, setPrices] = useState([]);
   const [extraOptions, setExtraOptions] = useState([]);
   const [extra, setExtra] = useState(null);
-
+  const  {success:updateProductSuccess} = useSelector(
+    (state) => state?.updateProduct
+  );
   const { product } = useSelector((state) => state.product);
+
   useEffect(() => {
-    if (!product.title) {
+    if (!product.title ) {
       dispatch(getSingleProduct(id));
     } else {
       setDesc(product.desc);
@@ -27,7 +34,14 @@ const Add = () => {
       setExtraOptions(product.extraOptions);
       setImage(product.img)
     }
-  }, [product.title, id]);
+  }, [product.title, id,dispatch]);
+  useEffect(()=> {
+    if(updateProductSuccess) {
+      toastify() 
+      history.push('/admin/dashboard')
+      dispatch({type:UPDATE_PRODUCT_RESET})
+    } 
+  },[updateProductSuccess,dispatch,history])
   const uploadImageHandler = async (e) => {
     const file = e.target.files[0];
 
@@ -69,6 +83,8 @@ const Add = () => {
         extraOptions,
       })
     );
+
+ 
   };
 
   const handleRemove = (id) => {
@@ -78,6 +94,8 @@ const Add = () => {
   };
 
   return (
+    <>
+    <ToastContainer/>
     <div className={styles.container}>
       <div className={styles.container2}>
         <div className={styles.wrapper}>
@@ -182,7 +200,8 @@ const Add = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
-export default Add;
+export default EditProductScreen;
