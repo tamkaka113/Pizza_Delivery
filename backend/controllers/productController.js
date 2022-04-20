@@ -27,7 +27,7 @@ const uploadNewImage = asyncHandler(async (req, res) => {
 });
 
 const createNewProduct = asyncHandler(async (req, res) => {
-  const product = await Product.create(req.body);
+  const product = await Product.create(req.body);s
 
   if (!product) {
     throw new Error("Cannot Create New Product");

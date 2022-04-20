@@ -22,7 +22,7 @@ const Carousel = () => {
       <img
         src="../image/arrowl.png"
         className={styles.arrowImg}
-        style={{ left: "0", zIndex: "20", objectFit: "contain" }}
+        style={{ left: "0", zIndex: "20", objectFit: "cover" }}
         alt="arrow"
         onClick={() => {
           handleDirection("left");

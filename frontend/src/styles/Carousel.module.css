@@ -31,6 +31,22 @@
     cursor: pointer;
 }
 @media screen and (max-width: 480px) {
+
+}
+
+
+@media (min-width:740px) and (max-width:1023px) {
+.imgContainer {
+  width: 100vw;
+  background-size: contain;
+  height: 450px;
+  margin-top: 50px;
+}
+
+
+}
+
+@media  (max-width:739px) {
   .imgContainer{
 
     height: 250px;
@@ -38,4 +54,6 @@
   .container {
     margin-top: 80px;
   }
+
 }
+

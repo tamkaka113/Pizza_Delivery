@@ -1,7 +1,6 @@
 import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
-dotenv.config();
 import connectDB from './db/connectDB.js'
 import productRouter from './routes/productRouter.js'
 import adminRouter from './routes/adminRouter.js'
@@ -10,6 +9,7 @@ import orderRouter from './routes/orderRouter.js'
 import fileUpload from 'express-fileupload'
 import { v2 as cloudinary } from "cloudinary";
 import path from 'path'
+dotenv.config();
 const app = express();
 
 app.use(morgan("dev"));

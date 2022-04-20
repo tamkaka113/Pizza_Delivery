@@ -1,35 +1,28 @@
-
 import { useEffect, useState } from "react";
 import styles from "../../styles/Login.module.css";
-import {adminLogin} from '../../actions/adminActions'
-import {useDispatch,useSelector} from'react-redux'
-const Login = ({history,location}) => {
-
-  const dispatch =useDispatch()
+import { adminLogin } from "../../actions/adminActions";
+import { useDispatch, useSelector } from "react-redux";
+const Login = ({ history, location }) => {
+  const dispatch = useDispatch();
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
-const {adminInfo,error,success} =useSelector(state => state?.adminLogin)
+  const { adminInfo, error, success } = useSelector(
+    (state) => state?.adminLogin
+  );
 
-
-  
   const handleClick = () => {
-
-  dispatch(adminLogin({username,password})) 
+    dispatch(adminLogin({ username, password }));
   };
 
-useEffect(()=> {
-  if(adminInfo.username) {
-      history.push('/')
-  }else {
-    history.push('/admin/login')
-  }
-},[history,success,adminInfo.username])
-
+  useEffect(() => {
+    if (adminInfo?.username) {
+      history.push("/");
+    } else {
+      history.push("/admin/login");
+    }
+  }, [history, success, adminInfo?.username]);
 
   return (
-
-
-
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1>Admin Dashboard</h1>
@@ -47,7 +40,7 @@ useEffect(()=> {
         <button onClick={handleClick} className={styles.button}>
           Sign In
         </button>
-        {error&& <span className={styles.error}>{error}</span>}
+        {error && <span className={styles.error}>{error}</span>}
       </div>
     </div>
   );
