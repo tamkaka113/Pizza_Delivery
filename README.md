@@ -1,15 +1,15 @@
-# Features
+## Features
 
-Full featured shopping cart
-Top products carousel
-Product search feature
-User profile with orders
-Admin product management
-Admin user management
-Admin Order details page
-Mark orders as delivered option
-Checkout process (shipping, payment method, etc)
-PayPal / credit card integration
+- Full featured shopping cart
+- Top products carousel
+- Product search feature
+- User profile with orders
+- Admin product management
+- Admin user management
+- Admin Order details page
+- Mark orders as delivered option
+- Checkout process (shipping, payment method, etc)
+- PayPal / credit card integration
 
 ## Usage
 
