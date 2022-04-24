@@ -33,9 +33,9 @@ You can also install and setup Babel if you would like
 
 ## Install Dependencies (frontend & backend)
 
-npm install
-cd frontend
-npm install
+- npm install
+- cd frontend
+- npm install
 
 ## Run
 
@@ -67,5 +67,5 @@ npm run data:destroy
 ## Admin Logins
 
 - Go to /admin/login
-  admin113 (Admin)
-  123456
+- admin113 (Admin)
+- 123456

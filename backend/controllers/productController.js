@@ -27,7 +27,7 @@ const uploadNewImage = asyncHandler(async (req, res) => {
 });
 
 const createNewProduct = asyncHandler(async (req, res) => {
-  const product = await Product.create(req.body);s
+  const product = await Product.create(req.body);
 
   if (!product) {
     throw new Error("Cannot Create New Product");
@@ -37,11 +37,10 @@ const createNewProduct = asyncHandler(async (req, res) => {
 
 const updateProduct = asyncHandler(async (req, res) => {
   const { id: productId } = req.params;
-  const product = await Product.findOneAndUpdate({ _id:productId }, req.body, {
+  const product = await Product.findOneAndUpdate({ _id: productId }, req.body, {
     new: true,
     runValidators: true,
   });
-
 
   if (!product) {
     throw new Error("Product Not Found");

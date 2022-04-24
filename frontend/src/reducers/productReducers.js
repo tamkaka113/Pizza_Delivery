@@ -14,7 +14,7 @@ import {
   UPDATE_PRODUCT_REQUEST,
   UPDATE_PRODUCT_SUCCESS,
   UPDATE_PRODUCT_FAIL,
-  UPDATE_PRODUCT_RESET
+  UPDATE_PRODUCT_RESET,
 } from "../contants/productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -50,7 +50,7 @@ export const createProductReducer = (state = { product: {} }, action) => {
     case CREATE_PRODUCT_REQUEST:
       return { loading: true, product: {} };
     case CREATE_PRODUCT_SUCCESS:
-      return { loading: false,success:true, product: action.payload };
+      return { loading: false, success: true, product: action.payload };
     case CREATE_PRODUCT_FAIL:
       return { loading: false, error: action.payload };
 
@@ -64,27 +64,24 @@ export const updateProductReducer = (state = { product: {} }, action) => {
     case UPDATE_PRODUCT_REQUEST:
       return { loading: true, product: {} };
     case UPDATE_PRODUCT_SUCCESS:
-      return { loading: false, success:true, product: action.payload };
+      return { loading: false, success: true, product: action.payload };
     case UPDATE_PRODUCT_FAIL:
       return { loading: false, error: action.payload };
-    
-      case UPDATE_PRODUCT_RESET:
-        return  { loading:false, product: {} };
-      
-  
+
+    case UPDATE_PRODUCT_RESET:
+      return { loading: false, product: {} };
+
     default:
       return state;
   }
 };
-
-
 
 export const deleteProductReducer = (state = {}, action) => {
   switch (action.type) {
     case DELETE_PRODUCT_REQUEST:
       return { loading: true };
     case DELETE_PRODUCT_SUCCESS:
-      return { loading: false,success:true};
+      return { loading: false, success: true };
     case DELETE_PRODUCT_FAIL:
       return { loading: false, error: action.payload };
 

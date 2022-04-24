@@ -1,14 +1,14 @@
-import React, { useState,useRef,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "../styles/Product.module.css";
-import {addToCart} from '../actions/cartActions'
+import { addToCart } from "../actions/cartActions";
 import { useDispatch } from "react-redux";
-const ProductDetail = ({ loading, pizza,toastify }) => {
-    const dispatch =useDispatch()
-    const pizzaRef =useRef()
+const ProductDetail = ({ loading, pizza, toastify }) => {
+  const dispatch = useDispatch();
+  const pizzaRef = useRef();
   const [size, setSize] = useState(0);
   const [price, setPrice] = useState(0);
-  const [extras, setExtras] =useState([])
-  const [quantity, setQuantity] =useState(1)
+  const [extras, setExtras] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
   const changePrice = (number) => {
     setPrice(price + number);
@@ -18,43 +18,41 @@ const ProductDetail = ({ loading, pizza,toastify }) => {
     const checked = e.target.checked;
     if (checked) {
       changePrice(option.price);
-      setExtras(prev => [...prev,option])
+      setExtras((prev) => [...prev, option]);
     } else {
       changePrice(-option.price);
-      setExtras(extras.filter(extra => extra._id !== option._id))
+      setExtras(extras.filter((extra) => extra._id !== option._id));
     }
   };
 
   useEffect(() => {
-  
     pizzaRef.current?.scrollIntoView({ behavior: "smooth" });
-   
-  }, [])
-  
-  const handleCart =() => {
+  }, []);
 
-      dispatch(addToCart({
-      _id:pizza._id,
-      img:pizza.img,
-      price:pizza?.prices && pizza?.prices[size] +price,
-      title:pizza.title,
-      desc:pizza.desc,
-      extras:extras,
-      qnt:quantity
+  const handleCart = () => {
+    dispatch(
+      addToCart({
+        _id: pizza._id,
+        img: pizza.img,
+        price: pizza?.prices && pizza?.prices[size] + price,
+        title: pizza.title,
+        desc: pizza.desc,
+        extras: extras,
+        qnt: quantity,
+      })
+    );
 
-      }))
-
-      toastify()
-  }
+    toastify();
+  };
   return (
-    <div >
+    <div>
       <div ref={pizzaRef}></div>
       {loading && (
         <div style={{ fontSize: "20px", marginTop: "10px" }}>
           Loading 🍕🍕🍕
         </div>
       )}
-      <div  className={styles.container}>
+      <div className={styles.container}>
         <div className={styles.left}>
           <div className={styles.imgContainer}>
             <img className={styles.img} src={pizza?.img} alt="" />
@@ -62,8 +60,8 @@ const ProductDetail = ({ loading, pizza,toastify }) => {
         </div>
         <div className={styles.right}>
           <h1 className={styles.title}>{pizza?.name}</h1>
-          <span  className={styles.price}>
-          ${pizza?.prices && pizza?.prices[size] +price}
+          <span className={styles.price}>
+            ${pizza?.prices && pizza?.prices[size] + price}
           </span>
           <p className={styles.desc}>{pizza?.desc}</p>
           <h3 className={styles.choose}>Choose the size</h3>
@@ -112,10 +110,17 @@ const ProductDetail = ({ loading, pizza,toastify }) => {
           </div>
 
           <div className={styles.add}>
-            <input onChange={(e)=> {setQuantity(e.target.value)}} type="number" defaultValue={quantity} className={styles.quantity} />
-            <button 
-            onClick ={()=> handleCart()}
-            className={styles.button}>Add to Cart</button>
+            <input
+              onChange={(e) => {
+                setQuantity(e.target.value);
+              }}
+              type="number"
+              defaultValue={quantity}
+              className={styles.quantity}
+            />
+            <button onClick={() => handleCart()} className={styles.button}>
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

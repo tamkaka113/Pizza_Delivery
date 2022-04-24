@@ -36,21 +36,16 @@ export const getAllOrder = asyncHandler(async (req, res) => {
 });
 
 export const updateOrderStatus = asyncHandler(async (req, res) => {
-
-  const {currentStatus} =req.body
+  const { currentStatus } = req.body;
   const order = await Order.findById(req.params.id);
 
   if (!order) {
     throw new Error("Orders Not Found");
   }
 
- 
-      order.status =currentStatus +  ( order.status<=1?1:0)
-  
-  
+  order.status = currentStatus + (order.status <= 1 ? 1 : 0);
 
-
-  const newOrder = await order.save()
+  const newOrder = await order.save();
 
   res.status(200).json(newOrder);
 });

@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/Add.module.css";
 import axios from "axios";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../actions/productActions";
-import { useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 const Add = ({ setClose }) => {
   const dispatch = useDispatch();
-  const history =useHistory()
-  const {success} =useSelector(state => state?.createProduct)
- 
+  const history = useHistory();
+  const { success } = useSelector((state) => state?.createProduct);
 
   const [image, setImage] = useState("");
   const [title, setTitle] = useState(null);
@@ -40,7 +39,7 @@ const Add = ({ setClose }) => {
   };
 
   const handleExtraInput = (e) => {
-    setExtra({...extra, [e.target.name]: e.target.value });
+    setExtra({ ...extra, [e.target.name]: e.target.value });
   };
 
   const handleExtra = (e) => {
@@ -51,7 +50,7 @@ const Add = ({ setClose }) => {
     dispatch(
       createProduct({
         title,
-        img:image,
+        img: image,
         desc,
         prices,
         extraOptions,
@@ -59,13 +58,12 @@ const Add = ({ setClose }) => {
     );
   };
 
-  useEffect(()=>{
-    if(success) {
-
-      setClose(true)
-      history.push('/admin/dashboard')
+  useEffect(() => {
+    if (success) {
+      setClose(true);
+      history.push("/admin/dashboard");
     }
-  },[success,setClose,history])
+  }, [success, setClose, history]);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

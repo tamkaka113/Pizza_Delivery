@@ -2,29 +2,29 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/Cart.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { removeCart } from "../actions/cartActions";
-import {createNewOrder} from '../actions/orderActions'
+import { createNewOrder } from "../actions/orderActions";
 import {
   PayPalScriptProvider,
   PayPalButtons,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 import OrderDetail from "../components/OrderDetail";
-import {resetCart} from '../actions/cartActions'
-const CartScreen = ({history}) => {
+import { resetCart } from "../actions/cartActions";
+const CartScreen = ({ history }) => {
   const [open, setOpen] = useState(false);
   const [cash, setCash] = useState(false);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
-  const orderList =useSelector(state=> state.orders)
-  const {success, orders} =orderList
-  useEffect(()=> {
-    if(success) {
-      history.push(`/order/${orders._id}`)
-      dispatch(resetCart())
-      window.location.reload()
+  const orderList = useSelector((state) => state.orders);
+  const { success, orders } = orderList;
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${orders._id}`);
+      dispatch(resetCart());
+      window.location.reload();
     }
-  },[success,orders._id,dispatch,history])
+  }, [success, orders._id, dispatch, history]);
 
   const totalPrice = cartItems.reduce((total, item) => {
     total += item.price * item.qnt;
@@ -38,10 +38,9 @@ const CartScreen = ({history}) => {
   const handleRemove = (id) => {
     dispatch(removeCart(id));
   };
- const createOrder =  (order) =>  {
-  
-  dispatch(createNewOrder(order))
-}   
+  const createOrder = (order) => {
+    dispatch(createNewOrder(order));
+  };
   const ButtonWrapper = ({ currency, showSpinner }) => {
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
 
@@ -82,13 +81,12 @@ const CartScreen = ({history}) => {
           onApprove={function (data, actions) {
             return actions.order.capture().then(function (details) {
               const shipping = details.purchase_units[0].shipping;
-                createOrder({
-                  customer: shipping.name.full_name,
-                  address: shipping.address.address_line_1,
-                  total: totalPrice,
-                  method: 1,
-                })
-              
+              createOrder({
+                customer: shipping.name.full_name,
+                address: shipping.address.address_line_1,
+                total: totalPrice,
+                method: 1,
+              });
             });
           }}
         />
@@ -192,7 +190,13 @@ const CartScreen = ({history}) => {
           )}
         </div>
       </div>
-      {cash && <OrderDetail total={totalPrice.toFixed(2)} createNewOrder={createNewOrder} dispatch ={dispatch}/>}
+      {cash && (
+        <OrderDetail
+          total={totalPrice.toFixed(2)}
+          createNewOrder={createNewOrder}
+          dispatch={dispatch}
+        />
+      )}
     </div>
   );
 };
